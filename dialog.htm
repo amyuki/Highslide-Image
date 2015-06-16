@@ -6,7 +6,6 @@ div{
 }
 .highslide-box {
 	font-size:12px;
-	position:relative;
 }
 .highslide-label{
   display: inline-block;
@@ -50,6 +49,7 @@ textarea:focus,input[type=text]:focus{
 #highslide-cancel {
   line-height: 25px;
   float: left;
+  font-size: 13px;
 }
 .submitbox .submitdelete {
   text-decoration: none;
@@ -98,6 +98,21 @@ textarea:focus,input[type=text]:focus{
   text-decoration: none;
 }
 </style>
+<script type="text/javascript">
+ function htmlEntities(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    function InsertValue() {
+        var thumbnail_url = document.getElementById('highslide_thumbnail').value;
+        var fullsize_url = document.getElementById('highslide_fullsize').value;
+        var description = document.getElementById('highslide_description').value;
+
+        var code = '<a href="'+fullsize_url+'" class="highslide" onclick="return hs.expand(this)" title="'+description+'"><img src="'+thumbnail_url+'"  alt="" /></a>';
+        window.parent.tinyMCE.activeEditor.execCommand('mceInsertContent', false, code); 
+        window.parent.tinyMCE.activeEditor.windowManager.close(); 
+    }
+</script>
+<form onsubmit="InsertValue();return false;">
 <div class="highslide-box">
 	<div>
 		<label class="highslide-label">Thumbnail URL<sup>*</sup>: </label>
@@ -112,11 +127,12 @@ textarea:focus,input[type=text]:focus{
 		<textarea id="highslide_description" class="highslide-textfield" row="" col=""></textarea>
 	</div>
 </div>
-<div class="submitbox">
+	<div class="submitbox">
 			<div id="highslide-cancel">
 				<a class="submitdelete deletion" href="#">Cancel</a>
 			</div>
 			<div id="highslide-update">
 				<input type="submit" value="Insert" class="button button-primary" id="highslideimage-submit" name="highslideimage-submit">
-			</div>
+
 </div>
+</form>
