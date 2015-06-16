@@ -1,14 +1,33 @@
 <?php
 /*
 Plugin Name: Highslide Image
-Plugin URI: http://lab.szeching.com/highslideimage.html
-Description: Easy making <a href="http://highslide.com/">Highslide</a> popups on images.
+Plugin URI: http://lab.szeching.com/highslideimage/
+Description: Easy making Highslide popups on images.
 Version:  1.0
 Author: Yuki Cheung
 Author URI: http://szeching.com/
 */
 add_action('admin_init','highslideimage_tinymce_button');
 add_action( 'init', 'register_shortcodes');
+add_action('wp_head','highslideimage_head');
+function highslideimage_head(){
+	print('
+		<link rel="stylesheet" href="'.get_bloginfo('wpurl').'/wp-content/plugins/HighslideImage/highslide.css" type="text/css" />
+		<!--[if lt IE 7]>
+		<link rel="stylesheet" type="text/css" href="'.get_bloginfo('wpurl').'/wp-content/plugins/HighslideImage/highslide-ie6.css" />
+		<![endif]-->
+
+<script type="text/javascript" src="'.get_bloginfo('wpurl').'/wp-content/plugins/HighslideImage/js/highslide.packed.js"></script>
+
+
+<script type="text/javascript">
+	hs.graphicsDir =  "'.get_bloginfo('wpurl').'/wp-content/plugins/HighslideImage/graphics/";
+	hs.outlineType = "rounded-white";
+	hs.captionEval = "this.a.title";
+	hs.showCredits = false;
+</script>
+');
+}
 
 function highslideimage_tinymce_button(){
 	if (current_user_can('edit_posts') && current_user_can('edit_pages')) {
@@ -36,7 +55,7 @@ function highslideimage_function($atts,$content){
 		'fullsize' => '',
 		'thumbnail' => '',
 	), $atts));
-	return '<a href="'.$fullsize.'" class="highslide" onclick="return hs.expand(this)" title="'.$content.'"><img src="'.$thumbnail.'"  alt="image" title="Click to enlarge" /></a>';
+	return '<a href="'.$fullsize.'" class="highslide" onclick="return hs.expand(this);" title="'.$content.'"><img src="'.$thumbnail.'"  alt="image" title="Click to enlarge" /></a>';
 }
 
 ?>
