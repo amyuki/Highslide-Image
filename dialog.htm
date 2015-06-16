@@ -1,0 +1,122 @@
+<style>
+div{
+  color: #444;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1.4em;
+}
+.highslide-box {
+	font-size:12px;
+	position:relative;
+}
+.highslide-label{
+  display: inline-block;
+  width: 120px;
+  text-align: right;
+  padding-right: 5px;
+  max-width: 24%;
+}
+textarea,input[type=text] {
+  margin-top: 5px;
+  width: 70%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+  background-color: #fff;
+  color: #32373c;
+  outline: 0;
+  -webkit-transition: .05s border-color ease-in-out;
+  transition: .05s border-color ease-in-out;
+  font-size:14px;
+  padding: 3px 5px;
+}
+textarea:focus,input[type=text]:focus{
+  border-color: #5b9dd9;
+  -webkit-box-shadow: 0 0 2px rgba(30,140,190,.8);
+  box-shadow: 0 0 2px rgba(30,140,190,.8);
+}
+
+.submitbox {
+  padding: 8px 16px;
+  background: #fcfcfc;
+  border-top: 1px solid #dfdfdf;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+#highslide-cancel {
+  line-height: 25px;
+  float: left;
+}
+.submitbox .submitdelete {
+  text-decoration: none;
+  padding: 1px 2px;
+  color: #a00;
+}
+.submitbox .submitdelete:hover{
+  color: red;
+  text-decoration: none;
+  border: none;
+}
+#highslide-update {
+  line-height: 23px;
+  float: right;
+}
+#highslideimage-submit {
+  float: right;
+  margin-bottom: 0;
+}
+.button {
+  vertical-align: top;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 26px;
+  height: 28px;
+  margin: 0;
+  padding: 0 10px 1px;
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-appearance: none;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  white-space: nowrap;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.button-primary {
+  background: #00a0d2;
+  border-color: #0073aa;
+  -webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.5),0 1px 0 rgba(0,0,0,.15);
+  box-shadow: inset 0 1px 0 rgba(120,200,230,.5),0 1px 0 rgba(0,0,0,.15);
+  color: #fff;
+  text-decoration: none;
+}
+</style>
+<div class="highslide-box">
+	<div>
+		<label class="highslide-label">Thumbnail URL<sup>*</sup>: </label>
+		<input id="highslide_thumbnail" class="highslide-textfield" type="text" />
+	</div>
+	<div>
+		<label class="highslide-label">Fullsize URL<sup>*</sup>:</label>
+		<input id="highslide_fullsize" class="highslide-textfield" type="text" />
+	</div>
+	<div>
+		<label class="highslide-label">Description:</label>
+		<textarea id="highslide_description" class="highslide-textfield" row="" col=""></textarea>
+	</div>
+</div>
+<div class="submitbox">
+			<div id="highslide-cancel">
+				<a class="submitdelete deletion" href="#">Cancel</a>
+			</div>
+			<div id="highslide-update">
+				<input type="submit" value="Insert" class="button button-primary" id="highslideimage-submit" name="highslideimage-submit">
+			</div>
+</div>

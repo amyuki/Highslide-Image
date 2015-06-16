@@ -9,9 +9,10 @@
 			});
 			ed.addCommand('add_highslideimage',function(){
 				ed.windowManager.open({
-					file : url+'/dialog.htm',
-					width : 320,
-					height : 120,
+					title: 'Insert Highslideimage',
+					file : url+'../../dialog.htm',
+					width : 600,
+					height : 200,
 					inline :1
 				});
 			});
