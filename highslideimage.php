@@ -8,6 +8,7 @@ Author: Yuki Cheung
 Author URI: http://szeching.com/
 */
 add_action('admin_init','highslideimage_tinymce_button');
+add_action( 'init', 'register_shortcodes');
 
 function highslideimage_tinymce_button(){
 	if (current_user_can('edit_posts') && current_user_can('edit_pages')) {
@@ -26,5 +27,16 @@ function highslideimage_add_tinymce_buttons($plugin_array){
 	return $plugin_array;
 }
 
+function register_shortcodes(){
+	add_shortcode('highslideimage', 'highslideimage_function');
+}
+
+function highslideimage_function($atts,$content){
+	extract(shortcode_atts(array(
+		'fullsize' => '',
+		'thumbnail' => '',
+	), $atts));
+	return '<a href="'.$fullsize.'" class="highslide" onclick="return hs.expand(this)" title="'.$content.'"><img src="'.$thumbnail.'"  alt="image" title="Click to enlarge" /></a>';
+}
 
 ?>

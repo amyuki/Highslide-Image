@@ -107,7 +107,7 @@ textarea:focus,input[type=text]:focus{
         var fullsize_url = document.getElementById('highslide_fullsize').value;
         var description = document.getElementById('highslide_description').value;
 
-        var code = '<a href="'+fullsize_url+'" class="highslide" onclick="return hs.expand(this)" title="'+description+'"><img src="'+thumbnail_url+'"  alt="" /></a>';
+        var code = '[highslideimage thumbnail="'+thumbnail_url+'" fullsize="'+fullsize_url+'"]'+description+'[/highslideimage]';
         window.parent.tinyMCE.activeEditor.execCommand('mceInsertContent', false, code); 
         window.parent.tinyMCE.activeEditor.windowManager.close(); 
     }
